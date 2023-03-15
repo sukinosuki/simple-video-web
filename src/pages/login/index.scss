@@ -1,0 +1,32 @@
+.main {
+  padding: 2rem;
+}
+.header {
+
+  .title {
+    font-size: 2rem;
+  }
+
+  .tip {
+    margin-top: 1rem;
+    font-size: 1.2rem;
+    color: #777;
+
+  }
+}
+
+.form-box {
+  margin-top: 3rem;
+  .login-button {
+    width: 100%;
+    margin-top: 3rem;
+    color: white;
+    background-color: var(--primary-color);
+  }
+
+
+  .register-button{
+    font-size: 12px;
+  }
+
+}

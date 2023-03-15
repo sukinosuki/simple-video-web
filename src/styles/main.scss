@@ -1,0 +1,69 @@
+@import './markdown.css';
+@import './reset/index.scss';
+
+html,
+body,
+#app {
+  /* height: 100%; */
+  margin: 0;
+  padding: 0;
+}
+
+html {
+	/* 1rem = 10px */
+	font-size: calc(10 / 375 * 100vw) !important;
+}
+
+html.dark {
+  background: #121212;
+  color-scheme: dark;
+}
+
+#nprogress {
+  pointer-events: none;
+}
+
+#nprogress .bar {
+  background: rgb(13,148,136);
+  opacity: 0.75;
+  position: fixed;
+  z-index: 1031;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.flex {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.flex-1{
+  flex: 1;
+}
+
+.flex-end {
+  display: flex;
+  justify-content: flex-end;
+
+}
+
+.flex-column-end {
+  display: flex;
+  justify-content: flex-end;
+  flex-direction: column;
+}
+
+.shrink-0{
+  flex-shrink: 0;
+}
+
+:root {
+  --primary-color: #ff5457;
+}
