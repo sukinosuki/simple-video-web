@@ -5,7 +5,6 @@
  */
 
 import axios from 'axios'
-import { sleep } from '~/utils'
 import { toast } from '~/utils/toast'
 
 // import appConfig from '@/config'
@@ -17,22 +16,21 @@ const instance = axios.create({
   timeout: 30000,
 })
 
-instance.interceptors.request.use(async (config) => {
+instance.interceptors.request.use((config) => {
   const token = localStorage.getItem('token')
-  const _config = { ...config }
 
-  // TODO
-  _config.headers = {
-    token,
-    ...config.headers,
-  }
-
-  return _config
+  return {
+    ...config,
+    headers: {
+      ...config.headers,
+      Authorization: token,
+    },
+  } as any
 })
 
 instance.interceptors.response.use(async (res) => {
   console.log('res ', res)
-  await sleep()
+  // await sleep()
 
   const { status, data } = res
 
@@ -44,23 +42,15 @@ instance.interceptors.response.use(async (res) => {
   if (code === 0)
     return data
 
-  // 处理code !== 0
-  // switch (code) {
-  //   case 2: {
-  //     console.log('登录过期')
-  //     break
-  //   }
-  //   default: {
-  //     console.log(' ')
-  //   }
-  // }
-
   toast(msg)
   return Promise.reject(data)
 }, (err) => {
   // TODO
   console.log('请求出错 err ', err)
-  return Promise.reject(err.response.data)
+  if (err.response.data) {
+    toast(err.response.data.msg)
+    return Promise.reject(err.response.data)
+  }
 })
 
 export default {
@@ -73,6 +63,6 @@ export default {
   },
 
   delete<T = null>(url: string, data = {}): Promise<AppResponse<T>> {
-    return instance.delete(url, data)
+    return instance.delete(url, { data })
   },
 }

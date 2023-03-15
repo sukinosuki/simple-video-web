@@ -4,10 +4,16 @@
  * Description: index.ts
  */
 
-import user from './user'
+import auth from './user/auth'
 import email from './email'
+import video from './video'
+import collection from './user/collection'
+import like from './user/like'
 
 export default {
-  user,
+  auth,
   email,
+  video,
+  like,
+  collection,
 }

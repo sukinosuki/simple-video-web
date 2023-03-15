@@ -15,9 +15,12 @@ declare module '@vue/runtime-core' {
     TheCounter: typeof import('./components/TheCounter.vue')['default']
     TheFooter: typeof import('./components/TheFooter.vue')['default']
     TheInput: typeof import('./components/TheInput.vue')['default']
+    VarBottomNavigation: typeof import('@varlet/ui')['_BottomNavigationComponent']
+    VarBottomNavigationItem: typeof import('@varlet/ui')['_BottomNavigationItemComponent']
     VarBtn: typeof import('@varlet/ui')['_BtnComponent']
     VarButton: typeof import('@varlet/ui')['_ButtonComponent']
     VarForm: typeof import('@varlet/ui')['_FormComponent']
+    VarIcon: typeof import('@varlet/ui')['_IconComponent']
     VarInput: typeof import('@varlet/ui')['_InputComponent']
     VarSnackbar: typeof import('@varlet/ui')['_SnackbarComponent']
   }

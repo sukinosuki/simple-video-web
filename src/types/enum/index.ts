@@ -5,3 +5,4 @@
  */
 
 export * from './emailActionType'
+export * from './likeType'

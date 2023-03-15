@@ -4,7 +4,7 @@
  * Description: login.ts
  */
 
-import http from './http'
+import http from '../http'
 import type User from '~/types/user'
 
 export namespace API_Login {
@@ -21,6 +21,8 @@ export namespace API_Login {
 }
 
 export default {
+
+  getProfile: () => http.get('/api/v1/user/profile'),
 
   login: (data: API_Login.Login) => http.post<User.LoginRes>('/api/v1/user/login', data),
 

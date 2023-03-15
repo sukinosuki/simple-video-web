@@ -32,7 +32,6 @@ enum Action {
   LOGIN = 1,
   REGISTER = 2,
 }
-const user = useUserStore()
 
 const action = ref(Action.LOGIN)
 const confirmLoading = ref(false)
@@ -48,6 +47,9 @@ const isLogin = computed(() => {
   return action.value === Action.LOGIN
 })
 
+const { query } = router.currentRoute.value
+console.log('query ', query)
+
 //
 const toggleAction = () => {
   // router.push('/register')
@@ -60,17 +62,6 @@ const toggleAction = () => {
 
 //
 const handleSendEmail = async () => {
-  console.log('user.otherNames ', user.otherNames)
-  console.log('user.savedName ', user.savedName)
-
-  user.setNewName(form.email)
-  return
-  // Snackbar.allowMultiple(true)
-
-  // const loading = Snackbar.loading({
-  //   content: '下在发送',
-  //   position: 'center',
-  // })
   sendEmailLoading.value = true
   const data: API_Email.Send = {
     email: form.email,
@@ -79,7 +70,6 @@ const handleSendEmail = async () => {
   const [err, res] = await toCatch(api.email.send(data))
   sendEmailLoading.value = false
   await sleep()
-  // loading.clear()
 
   if (err)
     return
@@ -88,31 +78,34 @@ const handleSendEmail = async () => {
   form.code = res
 }
 
+// login
 const login = async () => {
   confirmLoading.value = true
   await sleep()
 
-  const [err, res] = await toCatch(api.user.login(form))
+  const [err, res] = await toCatch(api.auth.login(form))
   confirmLoading.value = false
-  if (err) {
-    // toast(err.message)
+  if (err)
     return
-  }
-  console.log('res ', res)
 
   authStore.login(res)
 
   await toast('欢迎回来')
-  console.log('router ', router)
+
+  if (query.from) {
+    if (router.hasRoute(query.from as string))
+      router.back()
+  }
 
   router.replace('/')
 }
-//
+
+// register
 const register = async () => {
   confirmLoading.value = true
   await sleep()
 
-  const [err, res] = await toCatch(api.user.register(form))
+  const [err, res] = await toCatch(api.auth.register(form))
   confirmLoading.value = false
 
   if (err)
@@ -121,6 +114,12 @@ const register = async () => {
   authStore.login(res)
 
   await toast('注册成功')
+
+  if (query.from) {
+    if (router.hasRoute(query.from as any))
+      router.back()
+  }
+
   router.replace('/')
 }
 
@@ -141,14 +140,16 @@ const handleSubmit = async () => {
 
 <template>
   <div class="page login-page">
-    <div v-if="authStore.isLogin">
-      用户已登录
+    <div class="page-close">
+      <VarButton text>
+        <VarIcon name="window-close" />
+      </VarButton>
     </div>
 
     <div class="main">
       <div class="header">
         <h3 class="title">
-          {{ action === Action.LOGIN ? '登录发现更多精彩' : '注册您的新账号' }}
+          {{ isLogin ? '登录发现更多精彩' : '注册您的新账号' }}
         </h3>
         <p class="tip">
           请遵守抖音用户协议和隐私政策以及运营服务商协议，运营商户将对你提供的信息进行验证
@@ -173,7 +174,7 @@ const handleSubmit = async () => {
           :loading="confirmLoading"
           class="login-button" @click="handleSubmit"
         >
-          {{ action === Action.LOGIN ? '登录' : '注册并登录' }}
+          {{ isLogin ? '登录' : '注册并登录' }}
         </VarButton>
 
         <div class="flex-end" style="margin-top: 1rem;">
@@ -183,7 +184,7 @@ const handleSubmit = async () => {
 
             :line="false" size="mini" text @click="toggleAction"
           >
-            {{ action === Action.LOGIN ? '没有账号? 注册账号' : '已有账号? 去登录' }}
+            {{ isLogin ? '没有账号? 注册账号' : '已有账号? 去登录' }}
           </var-button>
         </div>
       </VarForm>
@@ -191,6 +192,6 @@ const handleSubmit = async () => {
   </div>
 </template>
 
-<style lang="scss">
+<style lang="scss" scoped>
 @import "./index.scss";
 </style>

@@ -18,17 +18,26 @@ export const useAuthStore = defineStore('auth', () => {
   function login(data: User.LoginRes) {
     token.value = data.token
 
+    // TODO:
+    localStorage.setItem('token', data.token)
+
     userProfile.value = data.profile
   }
 
   // 登出
   function logout() {
+    // TODO
+    localStorage.removeItem('token')
+  }
 
+  function setToken(_token: string) {
+    token.value = _token
   }
 
   return {
     login,
     logout,
+    setToken,
     token,
     isLogin,
     userProfile,
