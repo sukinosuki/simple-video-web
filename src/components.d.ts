@@ -19,9 +19,17 @@ declare module '@vue/runtime-core' {
     VarBottomNavigationItem: typeof import('@varlet/ui')['_BottomNavigationItemComponent']
     VarBtn: typeof import('@varlet/ui')['_BtnComponent']
     VarButton: typeof import('@varlet/ui')['_ButtonComponent']
+    VarChip: typeof import('@varlet/ui')['_ChipComponent']
     VarForm: typeof import('@varlet/ui')['_FormComponent']
     VarIcon: typeof import('@varlet/ui')['_IconComponent']
     VarInput: typeof import('@varlet/ui')['_InputComponent']
     VarSnackbar: typeof import('@varlet/ui')['_SnackbarComponent']
+    VarTab: typeof import('@varlet/ui')['_TabComponent']
+    VarTabItem: typeof import('@varlet/ui')['_TabItemComponent']
+    VarTabs: typeof import('@varlet/ui')['_TabsComponent']
+    VarTabsItems: typeof import('@varlet/ui')['_TabsItemsComponent']
+  }
+  export interface ComponentCustomProperties {
+    vRipple: typeof import('@varlet/ui')['_RippleComponent']
   }
 }

@@ -45,6 +45,7 @@ const handleChange = (_active: number | string) => {
   flex-direction: column;
   .main {
     flex: 1;
+    overflow-y: scroll;
   }
 
   .bottom-navigation {

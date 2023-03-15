@@ -9,6 +9,7 @@ import email from './email'
 import video from './video'
 import collection from './user/collection'
 import like from './user/like'
+import userVideo from './user/video'
 
 export default {
   auth,
@@ -16,4 +17,5 @@ export default {
   video,
   like,
   collection,
+  userVideo,
 }

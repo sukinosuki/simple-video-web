@@ -5,6 +5,7 @@
  */
 
 import http from '../http'
+import type { Video } from '~/types/video'
 
 export namespace API_Collection {
   export interface Add {
@@ -17,9 +18,12 @@ export namespace API_Collection {
 }
 
 export default {
+  // 添加收藏
   add: (data: API_Collection.Add) => http.post('/api/v1/user/collection/video', data),
 
+  // 删除收藏
   delete: (vid: number) => http.delete(`/api/v1/user/collection/video/${vid}`),
 
-  getAll: (params: API_Collection.GetAll) => http.get('/api/v1/user/collection/video', params),
+  // 获取收藏列表
+  getAll: (params: API_Collection.GetAll) => http.get<Video.Simple[]>('/api/v1/user/collection/video', params),
 }

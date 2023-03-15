@@ -22,7 +22,7 @@ export namespace API_Login {
 
 export default {
 
-  getProfile: () => http.get('/api/v1/user/profile'),
+  getProfile: () => http.get<User.Profile>('/api/v1/user/profile'),
 
   login: (data: API_Login.Login) => http.post<User.LoginRes>('/api/v1/user/login', data),
 

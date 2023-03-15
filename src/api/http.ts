@@ -55,7 +55,7 @@ instance.interceptors.response.use(async (res) => {
 
 export default {
   get<T = null>(url: string, params = {}): Promise<AppResponse<T>> {
-    return instance.get(url, params)
+    return instance.get(url, { params })
   },
 
   post<T = null>(url: string, data = {}): Promise<AppResponse<T>> {

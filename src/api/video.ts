@@ -11,7 +11,7 @@ export namespace API_Video {
   export interface GetAll {
     page: number
     size: number
-
+    uid?: number
   }
 }
 export default {
