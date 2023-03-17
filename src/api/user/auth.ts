@@ -5,7 +5,7 @@
  */
 
 import http from '../http'
-import type User from '~/types/user'
+import type { User } from '~/types/user'
 
 export namespace API_Login {
   export interface Login {

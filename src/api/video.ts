@@ -13,9 +13,17 @@ export namespace API_Video {
     size: number
     uid?: number
   }
+  export interface Add {
+    cover: string
+    url: string
+    title: string
+  }
 }
+
 export default {
   getAll: (params: API_Video.GetAll) => http.get<Video.Simple[]>('/api/v1/video', params),
 
   get: (id: number) => http.get<Video.Res>(`/api/v1/video/${id}`),
+
+  add: (data: API_Video.Add) => http.post('/api/v1/video', data),
 }

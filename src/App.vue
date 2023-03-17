@@ -23,17 +23,19 @@ useHead({
 
 const authStore = useAuthStore()
 
-const appInit = async () => {
-  const token = localStorage.getItem('token')
-  if (token) {
-    // const[err,res]=await toCatch()
-    authStore.setToken(token)
-  }
-}
+// const appInit = async () => {
+const token = localStorage.getItem('token')
+console.log('[appInit] token ', token)
 
-onMounted(() => {
-  appInit()
-})
+if (token) {
+  // const[err,res]=await toCatch()
+  authStore.setToken(token)
+}
+// }
+
+// onMounted(() => {
+//   appInit()
+// })
 </script>
 
 <template>

@@ -14,6 +14,7 @@ export namespace API_Collection {
   export interface GetAll {
     page: number
     size: number
+    uid: number
   }
 }
 

@@ -1,4 +1,10 @@
-namespace User {
+/**
+ * Author: hanami
+ * Date: 2023-03-15 17:57:37
+ * Description: user.ts
+ */
+
+export namespace User {
   export interface LoginRes {
     profile: Profile
     token: string
@@ -21,5 +27,3 @@ namespace User {
     nickname: string
   }
 }
-
-export default User

@@ -1,0 +1,79 @@
+
+.me-page {
+  height: 100%;
+}
+.profile-wrap {
+
+  padding: 1.2rem;
+  .username {
+    font-size: 1.6rem;
+  }
+  .uid {
+    font-size: 1.2rem;
+  }
+  .email{
+    font-size: 1.4rem;
+  }
+
+  .user-profile-chip{
+    margin-top: 1rem;
+    .clip {
+      color: white;
+      background-color: var(--primary-color);
+      margin-right: 1rem;
+    }
+  }
+}
+
+.tab-item {
+  padding: 1.2rem;
+
+}
+
+.video-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  padding-top: 1rem;
+
+  .video-item {
+    width: 32%;
+    border-radius: 0.2rem;
+    overflow: hidden;
+    margin-bottom: 1rem;
+    .cover {
+      width: 100%;
+      font-size: 0;
+      height: 14rem;
+      object-fit: cover;
+    }
+
+    .item-content {
+      padding: 0.4rem;
+      .title {
+        font-size: 12px;
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 2;
+        overflow: hidden;
+      }
+    }
+  }
+
+}
+
+.login-tip-box{
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+flex-direction: column;
+padding: 2rem;
+
+.text{
+  font-size: 1.4rem;
+}
+.button {
+  margin-top: 1rem;
+}
+}

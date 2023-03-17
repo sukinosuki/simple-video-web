@@ -1,0 +1,43 @@
+.publish-page {
+  min-height: 100vh;
+  background-color: #f2f2f2;
+  // padding: 1.2rem;
+  display: flex;
+  flex-direction: column;
+
+  .main {
+    flex: 1;
+    overflow-y: scroll;
+    padding: 1rem;
+  }
+}
+
+.form-item {
+  display: flex;
+  margin-bottom: 1rem;
+
+  .label {
+    font-size: 1.4rem;
+  }
+
+  .item-content {
+    flex: 1;
+    margin-left: 1rem;
+  }
+
+  &.title {
+    font-size: 2rem;
+   .var-input__wrap{
+
+      padding-top: 0 !important;
+    }
+  }
+}
+
+.footer {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  left: 0;
+  padding: 1rem 1rem 3rem 1rem;
+}

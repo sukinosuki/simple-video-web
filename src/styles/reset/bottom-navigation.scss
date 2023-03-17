@@ -1,7 +1,12 @@
 .var-bottom-navigation-item--active .var-bottom-navigation-item__label{
-  font-size: 12px !important;
+  font-size: 1.2rem !important;
 }
 
 .var-bottom-navigation{
-  box-shadow: 1px 2px 5px #ccc;
+  box-shadow: 1px 2px 5px #dddddd;
+  // background-color: black;
+}
+
+.var-bottom-navigation-item--active{
+  background-color: transparent !important;
 }

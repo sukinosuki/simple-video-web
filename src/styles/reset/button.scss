@@ -3,6 +3,15 @@
 
   &.primary {
     background-color: var(--primary-color);
-    color: white;
+    color: white !important;
+
+    .var-button__content{
+      color: white !important;
+    }
   }
+}
+
+.var-button--primary {
+  color: #fff;
+  background-color: var(--button-primary-color) !important;
 }

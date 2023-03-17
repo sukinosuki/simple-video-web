@@ -1,0 +1,14 @@
+.collection-page {
+  background-color: white;
+  height: 100vh;
+  user-select: none;
+  display: flex;
+  flex-direction: column;
+
+  .main {
+    flex: 1;
+    overflow-y: scroll;
+  }
+}
+
+

@@ -5,7 +5,7 @@
  */
 
 import { acceptHMRUpdate, defineStore } from 'pinia'
-import type User from '~/types/user'
+import type { User } from '~/types/user'
 
 export const useAuthStore = defineStore('auth', () => {
   const token = ref('')
@@ -24,10 +24,17 @@ export const useAuthStore = defineStore('auth', () => {
     userProfile.value = data.profile
   }
 
+  function setProfile(profile: User.Profile) {
+    userProfile.value = profile
+  }
+
   // 登出
   function logout() {
+    console.log('authStore [logout]')
+
     // TODO
     localStorage.removeItem('token')
+    token.value = ''
   }
 
   function setToken(_token: string) {
@@ -38,6 +45,7 @@ export const useAuthStore = defineStore('auth', () => {
     login,
     logout,
     setToken,
+    setProfile,
     token,
     isLogin,
     userProfile,

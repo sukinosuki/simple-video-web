@@ -16,11 +16,20 @@ export const toast = (msg: string) => {
       content: msg,
       forbidClick: true,
       duration: TOAST_DURATION,
-
     })
 
     setTimeout(() => {
       resolve(snackbar)
     }, TOAST_DURATION)
   })
+}
+
+export const appLoading = (msg: string) => {
+  const loading = Snackbar.loading({
+    content: msg,
+    forbidClick: true,
+    position: 'center',
+  })
+
+  return loading
 }

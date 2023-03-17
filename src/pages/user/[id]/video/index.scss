@@ -1,0 +1,21 @@
+.video-page {
+  background-color: white;
+  user-select: none;
+  padding-top: var(--app-bar-height);
+}
+
+.page-error, .page-empty{
+  padding-top: 3rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+
+  .img {
+    width: 30rem;
+  }
+
+  .text{
+    font-size: 1.4rem;
+  }
+}

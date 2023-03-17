@@ -6,7 +6,6 @@
 
 import axios from 'axios'
 import { toast } from '~/utils/toast'
-
 // import appConfig from '@/config'
 
 const instance = axios.create({
@@ -16,8 +15,17 @@ const instance = axios.create({
   timeout: 30000,
 })
 
+enum AppResponseCode {
+  EXPIRED = 10020,
+}
+
+// const authStore = useAuthStore()
+
 instance.interceptors.request.use((config) => {
+  const authStore = useAuthStore()
+
   const token = localStorage.getItem('token')
+  console.log('请求开始 token ', authStore.token)
 
   return {
     ...config,
@@ -29,7 +37,9 @@ instance.interceptors.request.use((config) => {
 })
 
 instance.interceptors.response.use(async (res) => {
-  console.log('res ', res)
+  const authStore = useAuthStore()
+  console.log('请求结束 res ', res)
+  console.log('请求结束 authStore ', authStore)
   // await sleep()
 
   const { status, data } = res
@@ -41,6 +51,14 @@ instance.interceptors.response.use(async (res) => {
 
   if (code === 0)
     return data
+
+  switch (code) {
+    case AppResponseCode.EXPIRED:
+      authStore.logout()
+      break
+    default:
+      console.log('')
+  }
 
   toast(msg)
   return Promise.reject(data)
@@ -60,6 +78,14 @@ export default {
 
   post<T = null>(url: string, data = {}): Promise<AppResponse<T>> {
     return instance.post(url, data)
+  },
+
+  upload<T = null>(url: string, data = {}): Promise<AppResponse<T>> {
+    return instance.post(url, data, {
+      headers: {
+        'Content-Type': 'multipart/form-data',
+      },
+    })
   },
 
   delete<T = null>(url: string, data = {}): Promise<AppResponse<T>> {

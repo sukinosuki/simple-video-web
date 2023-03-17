@@ -44,6 +44,12 @@ html.dark {
   justify-content: center;
 }
 
+.flex-start {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
 .flex-1{
   flex: 1;
 }
@@ -70,4 +76,12 @@ html.dark {
 
 :root {
   --primary-color: #ff5457;
+}
+
+.ripple-example-block {
+  user-select: none;
+  cursor: pointer;
+  color: #888;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  transition: background-color 0.25s;
 }

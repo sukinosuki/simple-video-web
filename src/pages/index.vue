@@ -1,39 +1,63 @@
 <route lang="yaml">
 meta:
-  layout: home2
+  layout: empty
     </route>
 
 <script setup lang="ts">
-const active = ref(0)
-const navMap = {
-  0: '/',
-  1: '/friend',
-  2: '/message',
-  3: '/me',
+const active = ref('home')
+const route = useRoute()
+
+const navMap: Record<string, string> = {
+  home: '/',
+  friend: '/friend',
+  message: '/message',
+  me: '/me',
 }
+
+const navMap2: Record<string, string> = {
+  '/': 'home',
+  '/friend': 'friend',
+  '/message': 'message',
+  '/me': 'me',
+}
+
 const router = useRouter()
-const handleChange = (_active: number | string) => {
-  console.log('active ', _active)
 
-  const path = navMap[_active]
+// TODO: 统一路由跳转
+const toPublishPage = () => {
+  router.push({
+    name: 'publish',
+  })
+}
 
-  console.log('path ', path)
+//
+const handleNavChange = (_active: number | string) => {
+  const path = navMap[_active as string]
 
   router.replace(path)
 }
+
+onMounted(() => {
+  const name = navMap2[route.path]
+  active.value = name
+})
 </script>
 
 <template>
   <div class="page main-page">
     <main class="main">
-      <router-view />
+      <router-view keep-alive />
     </main>
 
-    <var-bottom-navigation v-model:active="active" class="bottom-navigation" @change="handleChange">
-      <var-bottom-navigation-item label="首页" icon="home" />
-      <var-bottom-navigation-item label="朋友" icon="magnify" />
-      <var-bottom-navigation-item label="消息" icon="heart" />
-      <var-bottom-navigation-item label="我" icon="account-circle" />
+    <var-bottom-navigation v-model:active="active" :fab-props="{ type: 'primary' }" active-color="var(--primary-color)" class="bottom-navigation" @change="handleNavChange">
+      <var-bottom-navigation-item name="home" label="首页" icon="home" />
+      <var-bottom-navigation-item name="friend" label="朋友" icon="magnify" />
+      <var-bottom-navigation-item name="message" label="消息" icon="bell" />
+      <var-bottom-navigation-item name="me" label="我" icon="account-circle" />
+
+      <template #fab>
+        <VarIcon name="heart" @click="toPublishPage" />
+      </template>
     </var-bottom-navigation>
   </div>
 </template>

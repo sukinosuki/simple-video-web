@@ -141,7 +141,7 @@ const handleSubmit = async () => {
 <template>
   <div class="page login-page">
     <div class="page-close">
-      <VarButton text>
+      <VarButton text @click="() => router.back()">
         <VarIcon name="window-close" />
       </VarButton>
     </div>

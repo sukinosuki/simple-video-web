@@ -51,8 +51,10 @@ specifiers:
   vue: ^3.2.47
   vue-demi: ^0.13.11
   vue-i18n: ^9.2.2
+  vue-lazyload: 3.0.0-rc.2
   vue-router: ^4.1.6
   vue-tsc: ^1.2.0
+  vue3-lazyload: ^0.3.6
   vuetify: 3.1.8
 
 dependencies:
@@ -67,7 +69,9 @@ dependencies:
   vue: 3.2.47
   vue-demi: 0.13.11_vue@3.2.47
   vue-i18n: 9.2.2_vue@3.2.47
+  vue-lazyload: registry.npmmirror.com/vue-lazyload/3.0.0-rc.2
   vue-router: 4.1.6_vue@3.2.47
+  vue3-lazyload: registry.npmmirror.com/vue3-lazyload/0.3.6_vue@3.2.47
   vuetify: registry.npmmirror.com/vuetify/3.1.8_vue-i18n@9.2.2+vue@3.2.47
 
 devDependencies:
@@ -3086,7 +3090,7 @@ packages:
   /@vueuse/shared/9.13.0_vue@3.2.47:
     resolution: {integrity: sha512-UrnhU+Cnufu4S6JLCPZnkWh0WwZGUp72ktOF2DFptMlOs3TOdVv8xJN53zhHGARmVOsz5KqOls09+J1NR6sBKw==}
     dependencies:
-      vue-demi: 0.13.11_vue@3.2.47
+      vue-demi: registry.npmmirror.com/vue-demi/0.13.11_vue@3.2.47
     transitivePeerDependencies:
       - '@vue/composition-api'
       - vue
@@ -11035,6 +11039,63 @@ packages:
     version: 2.0.1
     engines: {node: '>=4'}
     dev: true
+
+  registry.npmmirror.com/vue-demi/0.12.5_vue@3.2.47:
+    resolution: {integrity: sha512-BREuTgTYlUr0zw0EZn3hnhC3I6gPWv+Kwh4MCih6QcAeaTlaIX0DwOVN0wHej7hSvDPecz4jygy/idsgKfW58Q==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/vue-demi/-/vue-demi-0.12.5.tgz}
+    id: registry.npmmirror.com/vue-demi/0.12.5
+    name: vue-demi
+    version: 0.12.5
+    engines: {node: '>=12'}
+    hasBin: true
+    requiresBuild: true
+    peerDependencies:
+      '@vue/composition-api': ^1.0.0-rc.1
+      vue: ^3.0.0-0 || ^2.6.0
+    peerDependenciesMeta:
+      '@vue/composition-api':
+        optional: true
+    dependencies:
+      vue: 3.2.47
+    dev: false
+
+  registry.npmmirror.com/vue-demi/0.13.11_vue@3.2.47:
+    resolution: {integrity: sha512-IR8HoEEGM65YY3ZJYAjMlKygDQn25D5ajNFNoKh9RSDMQtlzCxtfQjdQgv9jjK+m3377SsJXY8ysq8kLCZL25A==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/vue-demi/-/vue-demi-0.13.11.tgz}
+    id: registry.npmmirror.com/vue-demi/0.13.11
+    name: vue-demi
+    version: 0.13.11
+    engines: {node: '>=12'}
+    hasBin: true
+    requiresBuild: true
+    peerDependencies:
+      '@vue/composition-api': ^1.0.0-rc.1
+      vue: ^3.0.0-0 || ^2.6.0
+    peerDependenciesMeta:
+      '@vue/composition-api':
+        optional: true
+    dependencies:
+      vue: 3.2.47
+
+  registry.npmmirror.com/vue-lazyload/3.0.0-rc.2:
+    resolution: {integrity: sha512-Cg7Gqb7jAoiImMPH3EMfAwJ8gZuFoBJCEtA7+TGRljrtktDtV7JAHIyKvuTgQR8DFAd7MhKi1Ys8QHdSrnGdZQ==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/vue-lazyload/-/vue-lazyload-3.0.0-rc.2.tgz}
+    name: vue-lazyload
+    version: 3.0.0-rc.2
+    dev: false
+
+  registry.npmmirror.com/vue3-lazyload/0.3.6_vue@3.2.47:
+    resolution: {integrity: sha512-UcVnEN9JzxeFBa7nNAPWKXHTtvVAzWYhBSvRU+Gmx9MdTGLWKwjZiNSyB1Os25jr9HaFHWY0DaU8uugXkGu9Gw==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/vue3-lazyload/-/vue3-lazyload-0.3.6.tgz}
+    id: registry.npmmirror.com/vue3-lazyload/0.3.6
+    name: vue3-lazyload
+    version: 0.3.6
+    peerDependencies:
+      '@vue/composition-api': ^1.0.0-rc.1
+      vue: ^2.0.0 || >=3.0.0
+    peerDependenciesMeta:
+      '@vue/composition-api':
+        optional: true
+    dependencies:
+      vue: 3.2.47
+      vue-demi: registry.npmmirror.com/vue-demi/0.12.5_vue@3.2.47
+    dev: false
 
   registry.npmmirror.com/vuetify/3.1.8_vue-i18n@9.2.2+vue@3.2.47:
     resolution: {integrity: sha512-yODCnRxERSvcBwC6qPiySVhmZzNZ2Yme6b2lNLY1G8W/hbipAtbTCFVGB4ZY/qY7D7JNQBxzgVfZme7bDY9ZrQ==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/vuetify/-/vuetify-3.1.8.tgz}
