@@ -25,7 +25,6 @@ instance.interceptors.request.use((config) => {
   const authStore = useAuthStore()
 
   const token = localStorage.getItem('token')
-  console.log('请求开始 token ', authStore.token)
 
   return {
     ...config,
@@ -38,8 +37,7 @@ instance.interceptors.request.use((config) => {
 
 instance.interceptors.response.use(async (res) => {
   const authStore = useAuthStore()
-  console.log('请求结束 res ', res)
-  console.log('请求结束 authStore ', authStore)
+
   // await sleep()
 
   const { status, data } = res
@@ -78,6 +76,10 @@ export default {
 
   post<T = null>(url: string, data = {}): Promise<AppResponse<T>> {
     return instance.post(url, data)
+  },
+
+  put<T = null>(url: string, data = {}): Promise<AppResponse<T>> {
+    return instance.put(url, data)
   },
 
   upload<T = null>(url: string, data = {}): Promise<AppResponse<T>> {

@@ -4,7 +4,9 @@
  * Description: user.ts
  */
 
-export namespace User {
+import type { Gender } from './enum'
+
+export namespace Auth {
   export interface LoginRes {
     profile: Profile
     token: string
@@ -25,5 +27,8 @@ export namespace User {
     enabled: boolean
     id: number
     nickname: string
+    avatar: string
+    birthday?: string
+    gender: Gender
   }
 }

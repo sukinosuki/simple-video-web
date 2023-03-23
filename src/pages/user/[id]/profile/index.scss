@@ -1,0 +1,51 @@
+.page {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+
+  .main {
+    flex: 1;
+    padding: 1rem;
+  }
+}
+
+.mt1{
+  margin-top: 1rem;
+}
+
+.avatar-wrap{
+  padding: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  flex-direction: column;
+
+  .uploader-content{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+
+    .avatar-img {
+      width: 7rem;
+      height: 7rem;
+      border-radius: 50%;
+      object-fit: cover;
+    }
+
+    .text{
+      font-size: 1.4rem;
+      margin-top: 1rem;
+    }
+  }
+
+}
+
+.submit-button{
+  margin-top: 10rem;
+}
+
+>>> .dialog-layout{
+  width: 90vw;
+}

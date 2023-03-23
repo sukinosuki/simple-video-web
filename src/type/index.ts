@@ -4,6 +4,9 @@
  * Description: index.ts
  */
 
-export * from './user'
+export * from './auth'
 
 export * from './comment'
+export * from './TabStatus'
+export * from './followRank'
+export * from './user'

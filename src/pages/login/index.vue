@@ -8,7 +8,7 @@ import type { Form } from '@varlet/ui'
 import { reactive } from 'vue'
 import api from '~/api'
 import type { API_Email } from '~/api/email'
-import { EmailActionType } from '~/types/enum'
+import { EmailActionType } from '~/type/enum'
 import { sleep, toCatch } from '~/utils'
 import { toast } from '~/utils/toast'
 

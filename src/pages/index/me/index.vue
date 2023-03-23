@@ -6,9 +6,9 @@ meta:
 
 <script setup lang="ts">
 import api from '~/api'
-import type { API_Collection } from '~/api/user/collection'
-import type { User } from '~/types/user'
-import type { Video } from '~/types/video'
+import type { API_Collection } from '~/api/auth/collection'
+import type { User } from '~/type/auth'
+import type { Video } from '~/type/video'
 import { toCatch } from '~/utils'
 
 const profile = ref<User.Profile>()
@@ -79,6 +79,12 @@ const toLoginPage = () => {
   })
 }
 
+const toProfilePage = () => {
+  router.push({
+    path: `/user/${authStore.userProfile.user.id}/profile`,
+  })
+}
+
 onMounted(() => {
   console.log('me page mounted, isLogin: ', authStore.isLogin)
 
@@ -100,7 +106,9 @@ watchEffect(() => {
     <template v-if="authStore.isLogin">
       <div class="profile-wrap">
         <div class="flex-end">
-          <VarButton>编辑个人资料</VarButton>
+          <VarButton @click="toProfilePage">
+            编辑个人资料
+          </VarButton>
         </div>
 
         <div>

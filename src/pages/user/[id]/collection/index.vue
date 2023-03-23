@@ -7,9 +7,9 @@ meta:
 import { Dialog } from '@varlet/ui'
 import VideoItem from './components/VideoItem/index.vue'
 import api from '~/api'
-import type { API_Collection } from '~/api/user/collection'
-import { PageStatus } from '~/types/enum'
-import type { Video } from '~/types/video'
+import type { API_Collection } from '~/api/auth/collection'
+import { PageStatus } from '~/type/enum'
+import type { Video } from '~/type/video'
 import { sleep, toCatch } from '~/utils'
 import { toast } from '~/utils/toast'
 

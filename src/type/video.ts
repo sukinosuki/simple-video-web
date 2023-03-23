@@ -4,6 +4,8 @@
  * Description: video.ts
  */
 
+import type { PageStatus } from './enum'
+
 export namespace Video {
   export interface Res {
     video: {
@@ -32,6 +34,9 @@ export namespace Video {
     title: string
     locked: boolean
     user: SimpleUser
+
+    _pageStatus: PageStatus
+    _video: Res
   }
 
   export interface SimpleUser {

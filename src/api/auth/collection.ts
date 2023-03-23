@@ -5,7 +5,7 @@
  */
 
 import http from '../http'
-import type { Video } from '~/types/video'
+import type { Video } from '~/type/video'
 
 export namespace API_Collection {
   export interface Add {

@@ -5,7 +5,7 @@
  */
 
 import http from './http'
-import type { EmailActionType } from '~/types/enum'
+import type { EmailActionType } from '~/type/enum'
 
 export namespace API_Email {
   export interface Send {

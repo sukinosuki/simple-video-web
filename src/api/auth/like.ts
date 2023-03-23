@@ -5,7 +5,7 @@
  */
 
 import http from '../http'
-import type { LikeType } from '~/types/enum'
+import type { LikeType } from '~/type/enum'
 
 export namespace API_Like {
   export interface Like {

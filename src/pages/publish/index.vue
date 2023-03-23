@@ -9,7 +9,7 @@ import type { Form, VarFile } from '@varlet/ui'
 import { Snackbar } from '@varlet/ui'
 import api from '~/api'
 import type { API_Video } from '~/api/video'
-import { UploadClass, UploadType } from '~/types/enum'
+import { UploadClass, UploadType } from '~/type/enum'
 import { sleep, toCatch } from '~/utils'
 import { appLoading, toast } from '~/utils/toast'
 

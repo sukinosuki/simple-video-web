@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { defineEmits } from 'vue'
 
-import type { Video } from '~/types/video'
+import type { Video } from '~/type/video'
 
 const props = defineProps<{
   video: Video.Simple
@@ -13,16 +13,11 @@ const emit = defineEmits<{
 
 const menuVisible = ref(false)
 
-const tempCover = (cover: string) => {
-  console.log('[tempCover]')
-
-  return `${cover}?x-oss-process=image/auto-orient,1/resize,m_fill,w_140,h_80/quality,q_90`
-}
-
 const video = props.video
 const cover = `${video.cover}?x-oss-process=image/auto-orient,1/resize,m_fill,w_140,h_80/quality,q_90`
 console.log('render ')
 
+//
 const handleCancelCollect = () => {
   menuVisible.value = false
   emit('cancelCollect', video)

@@ -5,13 +5,14 @@
  */
 
 import http from './http'
-import type { Video } from '~/types/video'
+import type { Video } from '~/type/video'
 
 export namespace API_Video {
   export interface GetAll {
     page: number
     size: number
     uid?: number
+    exclude?: number[]
   }
   export interface Add {
     cover: string
@@ -21,6 +22,9 @@ export namespace API_Video {
 }
 
 export default {
+  // getAll: (params: API_Video.GetAll) => http.get<Video.Simple[]>('/api/v1/video', params),
+  feed: (params: API_Video.GetAll) => http.get<Video.Simple[]>('/api/v1/feed', params),
+
   getAll: (params: API_Video.GetAll) => http.get<Video.Simple[]>('/api/v1/video', params),
 
   get: (id: number) => http.get<Video.Res>(`/api/v1/video/${id}`),
