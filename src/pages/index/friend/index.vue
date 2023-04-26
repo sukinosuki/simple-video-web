@@ -4,12 +4,12 @@ meta:
           </route>
 
 <script setup lang="ts">
-import { ref } from 'vue'
 import debounce from 'lodash.debounce'
+import UserItem from './components/user-item/index.vue'
 import api from '~/api'
 import type { API_User } from '~/api/user'
 import type { User } from '~/type'
-import { sleep, toCatch } from '~/utils'
+import { toCatch } from '~/utils'
 import { toast } from '~/utils/toast'
 import { PageStatus } from '~/type/enum'
 import EmptyImg from '~/assets/empty.jpg'
@@ -25,7 +25,7 @@ interface LoadMoreStatus {
 
 const authStore = useAuthStore()
 const size = 10
-const users = ref<User.Simple[]>([])
+// const users = ref<User.Simple[]>([])
 const page = 1
 const loadMoreStatus = reactive<LoadMoreStatus>({
   isFinished: false,
@@ -82,29 +82,29 @@ const fetchData = async (isLoadMore = false) => {
 
 // 关注/取消关注
 // TODO: 防抖
-const handleToggleFollow = debounce(async (user: User.Simple, index: number) => {
-  // const[err]=await toCatch(api.follow.)
-// TODO: 不能关注自己
-  if (authStore?.userProfile?.user?.id === user.id) {
+const handleToggleFollow = debounce(async (user: User.Simple) => {
+  const index = loadMoreStatus.data.findIndex(item => item.user.id === user.user.id)
+
+  // TODO: 不能关注自己
+  if (authStore?.userProfile?.user?.id === user.user.id) {
     toast('不能关注自己')
     return
   }
 
-  if (users.value[index]._loading === true)
+  if (loadMoreStatus.data[index]._loading === true)
     return
 
-  users.value[index]._loading = true
-  const fn = user.is_follow ? api.follow.unFollow : api.follow.follow
+  loadMoreStatus.data[index]._loading = true
+  const fn = user.is_following ? api.follow.unFollow : api.follow.follow
 
-  await sleep()
-  const [err] = await toCatch(fn(user.id))
-  users.value[index]._loading = false
+  const [err] = await toCatch(fn(user.user.id))
+  loadMoreStatus.data[index]._loading = false
 
   if (err)
     return
 
-  users.value[index].followers += user.is_follow ? -1 : 1
-  users.value[index].is_follow = !user.is_follow
+  loadMoreStatus.data[index].followers += user.is_following ? -1 : 1
+  loadMoreStatus.data[index].is_following = !user.is_following
 }, 300, {
   leading: true,
   trailing: false,
@@ -147,25 +147,9 @@ onMounted(() => {
             :finished="loadMoreStatus.isFinished"
             @load="() => fetchData(true)"
           >
-            <li v-for="(user, index) in loadMoreStatus.data" :key="user.id" class="rank-item">
-              <img v-lazy="user.avatar" class="avatar">
-              <div class="content">
-                <span class="nickname">{{ user.nickname }}</span>
-                <div class="base-statistic">
-                  <span class="item offering-count">作品: {{ user.video_count }}</span>
-
-                  <span class="item follower-count">粉丝: {{ user.followers }}</span>
-
-                  <span class="item following-count">关注: {{ user.following_count }}</span>
-                </div>
-              </div>
-
-              <VarButton
-                :loading="user._loading" class="follow-button" :class="{ primary: !user.is_follow }" text size="small" @click="() => handleToggleFollow(user, index)"
-              >
-                {{ user.is_follow ? '取消关注' : '关注' }}
-              </VarButton>
-            </li>
+            <template v-for="(user, index) in loadMoreStatus.data" :key="index">
+              <UserItem :user="user" @toggle-follow="handleToggleFollow" />
+            </template>
           </VarList>
         </var-skeleton>
       </div>

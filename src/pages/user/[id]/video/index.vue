@@ -43,10 +43,10 @@ const fetchData = async (isLoadMore = false) => {
   const params: API_Collection.GetAll = {
     size,
     page: isLoadMore ? loadMoreStatus.page + 1 : 1,
-    uid: Number(route.params.id), // TODO
+    // uid: , // TODO
   }
 
-  const [err, res] = await toCatch(api.video.getAll(params))
+  const [err, res] = await toCatch(api.video.getAll(Number(route.params.id), params))
   loadMoreStatus.refreshing = false
   if (err) {
     loadMoreStatus.pageStatus = PageStatus.FAILED

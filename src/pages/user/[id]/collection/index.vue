@@ -13,6 +13,7 @@ import type { Video } from '~/type/video'
 import { sleep, toCatch } from '~/utils'
 import { toast } from '~/utils/toast'
 
+const route = useRoute()
 const page = 1
 const size = 10
 const pageStatus = ref(PageStatus.LOADING)
@@ -26,12 +27,12 @@ const fetchData = async () => {
   const params: API_Collection.GetAll = {
     page,
     size,
-    uid: 5, // TODO
+    // uid: 5, // TODO
   }
 
   await sleep()
 
-  const [err, res] = await toCatch(api.collection.getAll(params))
+  const [err, res] = await toCatch(api.collection.getAll(route.params.id, params))
   isRefresh.value = false
   if (err) {
     pageStatus.value = PageStatus.FAILED

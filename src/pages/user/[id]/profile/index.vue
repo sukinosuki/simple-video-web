@@ -5,6 +5,7 @@ meta:
 
 <script setup lang="ts">
 import type { Form, VarFile } from '@varlet/ui'
+import dayjs from 'dayjs'
 import api from '~/api'
 import type { API_Auth } from '~/api/auth/auth'
 import { Gender, UploadClass, UploadType } from '~/type/enum'
@@ -43,6 +44,12 @@ const fetchData = async () => {
       state: 'success',
     },
   )
+  if (res.user.birthday) {
+    const birthday = dayjs(res.user.birthday)
+    console.log('11 ', birthday.format())
+    console.log('22 ', birthday.format('YYYY-MM-DD HH:mm:ss'))
+  }
+
   form.birthday = res.user.birthday || ''
   form.nickname = res.user.nickname
   form.gender = res.user.gender
@@ -85,6 +92,14 @@ const handleCoverAfterRead = async (file: VarFile) => {
 }
 
 const handleSubmit = async () => {
+  // console.log('birthday ', dayjs(form.birthday).format())
+  // console.log('birthday ', dayjs(form.birthday).format('YYYY-MM-DD HH:mm:ss'))
+  // console.log('now ', dayjs())
+  // console.log('now ', dayjs().format())
+
+  console.log('new Date() ', new Date())
+
+  // return
   const validates = await formRef.value?.validate()
   if (!validates)
     return
@@ -93,9 +108,13 @@ const handleSubmit = async () => {
   const data: API_Auth.UpdateProfile = {
     nickname: form.nickname,
     avatar: '' || form.avatar[0].url!,
-    birthday: form.birthday || null,
+    // birthday: form.birthday ? dayjs().format() : null,
+    // birthday: new Date('2022-12-12'),
+    birthday: dayjs('2022-12-12 12:12:12').format(),
     gender: form.gender,
   }
+  console.log('data ', data.birthday)
+
   const [err] = await toCatch(api.auth.updateProfile(data))
   confirmLoading.value = false
 
@@ -165,6 +184,7 @@ onMounted(() => {
       @confirm="() => birthdayDatePickerVisible = false"
     >
       <var-date-picker v-model="form.birthday" />
+      <!-- <var-date-time-picker v-model="form.birthday" /> -->
     </VarDialog>
   </div>
 </template>

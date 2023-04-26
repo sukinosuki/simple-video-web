@@ -24,6 +24,8 @@ declare module '@vue/runtime-core' {
     VarCell: typeof import('@varlet/ui')['_CellComponent']
     VarChip: typeof import('@varlet/ui')['_ChipComponent']
     VarDatePicker: typeof import('@varlet/ui')['_DatePickerComponent']
+    VarDatetimePicker: typeof import('@varlet/ui')['_DatetimePickerComponent']
+    VarDateTimePicker: typeof import('@varlet/ui')['_DateTimePickerComponent']
     VarDialog: typeof import('@varlet/ui')['_DialogComponent']
     VarForm: typeof import('@varlet/ui')['_FormComponent']
     VarIcon: typeof import('@varlet/ui')['_IconComponent']

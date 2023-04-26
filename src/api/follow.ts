@@ -16,7 +16,7 @@ export namespace API_Follow{
 export default {
   rank: (params: API_Follow.Rank) => http.get<FollowRank[]>('/api/v1/follow/rank', params),
 
-  follow: (uid: number) => http.post(`/api/v1/user/0/follower/${uid}`),
+  follow: (uid: number) => http.post(`/api/v1/auth/following/${uid}`),
 
-  unFollow: (uid: number) => http.delete(`/api/v1/user/0/follower/${uid}`),
+  unFollow: (uid: number) => http.delete(`/api/v1/auth/following/${uid}`),
 }

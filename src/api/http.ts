@@ -12,7 +12,7 @@ const instance = axios.create({
   // baseURL: process.env.NODE_ENV === 'development' ? '' : appConfig.SERVER_URL,
   // baseURL: import.meta.env.VITE_SERVER_URL, // 需要通过npm run dev | npm run build:test | npm run build:prod 来区分请求地址
   // baseURL: 'http://127.0.0.1:2333/app', // 需要通过npm run dev | npm run build:test | npm run build:prod 来区分请求地址
-  timeout: 30000,
+  timeout: 300000,
 })
 
 enum AppResponseCode {

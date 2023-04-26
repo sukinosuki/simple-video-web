@@ -15,7 +15,8 @@ export namespace Auth {
   export interface Profile {
     collection_count: number
     dislike_count: number
-    fans_count: number
+    follower_count: number
+    following_count: number
     like_count: number
     video_count: number
     user: User

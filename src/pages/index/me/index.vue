@@ -7,11 +7,11 @@ meta:
 <script setup lang="ts">
 import api from '~/api'
 import type { API_Collection } from '~/api/auth/collection'
-import type { User } from '~/type/auth'
+import type { Auth } from '~/type/auth'
 import type { Video } from '~/type/video'
 import { toCatch } from '~/utils'
 
-const profile = ref<User.Profile>()
+const profile = ref<Auth.Profile>()
 
 const videos = ref<Video.Simple[]>([])
 
@@ -37,9 +37,9 @@ const fetchVideoCollection = async () => {
   const params: API_Collection.GetAll = {
     page: 1,
     size: 3,
-    uid: profile.value!.user.id, // TODO
+    // uid: profile.value!.user.id, // TODO
   }
-  const [err, res] = await toCatch(api.collection.getAll(params))
+  const [err, res] = await toCatch(api.collection.getAll(profile.value!.user.id, params))
   if (err)
     return
 
@@ -51,9 +51,9 @@ const fetchUserVideo = async () => {
   const params = {
     page: 1,
     size: 3,
-    uid: profile.value!.user.id,
+    // uid: profile.value!.user.id,
   }
-  const [err, res] = await toCatch(api.video.getAll(params))
+  const [err, res] = await toCatch(api.video.authAll(params))
   if (err)
     return
 
@@ -134,10 +134,10 @@ watchEffect(() => {
             0 获赞
           </VarButton>
           <VarButton text>
-            {{ profile?.fans_count }} 关注
+            {{ profile?.following_count }} 关注
           </VarButton>
           <VarButton text>
-            {{ profile?.fans_count }} 粉丝
+            {{ profile?.follower_count }} 粉丝
           </VarButton>
         </div>
       </div>

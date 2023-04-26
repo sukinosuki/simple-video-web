@@ -17,8 +17,8 @@ export namespace API_Like {
 
 export default {
   // 点赞、点踩
-  like: (data: API_Like.Like) => http.post('/api/v1/user/like/video', data),
+  like: (data: API_Like.Like) => http.post(`/api/v1/auth/like/video/${data.vid}`, data),
 
   // 取消点赞、取消点踩
-  dislike: (data: API_Like.Like) => http.delete('/api/v1/user/like/video', data),
+  dislike: (data: API_Like.Like) => http.delete(`/api/v1/auth/like/video/${data.vid}`, data),
 }
