@@ -81,7 +81,6 @@ const fetchData = async (isLoadMore = false) => {
 }
 
 // 关注/取消关注
-// TODO: 防抖
 const handleToggleFollow = debounce(async (user: User.Simple) => {
   const index = loadMoreStatus.data.findIndex(item => item.user.id === user.user.id)
 
